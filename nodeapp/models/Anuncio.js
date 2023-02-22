@@ -11,6 +11,18 @@ const anuncioSchema = mongoose.Schema({
     tags: [String]
 });
 
+/**
+ * METODOS
+ * - ESTATICO: lista(); --> Devuelve una lista de anuncios
+ */
+
+anuncioSchema.statics.lista = function(filtro) {
+    const query = Anuncio.find(filtro);
+    return query.exec();
+} 
+
+
+
 // Creación modelo de Anuncio
 const Anuncio = mongoose.model('Anuncio',anuncioSchema);
 

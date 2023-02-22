@@ -17,7 +17,7 @@ Fecha:26.FEB.23
   * cross-env --> `npm i cross-env`
   * express-validator --> `npm i express-validator`
   * mongoose --> `npm i mongoose` ... ([mongoosejs.com](https://mongoosejs.com/))
-* 
+
   
 
 
