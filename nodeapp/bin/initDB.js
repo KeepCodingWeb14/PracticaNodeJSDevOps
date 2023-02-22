@@ -20,10 +20,10 @@ async function initAnuncios() {
 
     // Crear anuncios iniciales
     const inserted = await Anuncio.insertMany ([
-        {nombre:'Anuncio1',venta:true, precio: 100, foto:'foto1.jpg'},
-        {nombre:'Anuncio2',venta:true, precio: 200, foto:'foto2.jpg'},
-        {nombre:'Anuncio3',venta:true, precio: 300, foto:'foto3.jpg'},
-        {nombre:'Anuncio4',venta:true, precio: 400, foto:'foto4.jpg'},
+        {nombre:'Anuncio1',venta:true, precio: 100, foto:'foto1.jpg', tags: ['motor', 'mobile']},
+        {nombre:'Anuncio2',venta:true, precio: 200, foto:'foto2.jpg', tags: ['lifestyle', 'mobile']},
+        {nombre:'Anuncio3',venta:true, precio: 300, foto:'foto3.jpg', tags: ['lifestyle', 'motor']},
+        {nombre:'Anuncio4',venta:true, precio: 400, foto:'foto4.jpg', tags: ['motor']},
     ]);
     console.log(`***Creados ${inserted.length} anuncios.***`)
 };
