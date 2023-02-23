@@ -16,8 +16,13 @@ const anuncioSchema = mongoose.Schema({
  * - ESTATICO: lista(); --> Devuelve una lista de anuncios
  */
 
-anuncioSchema.statics.lista = function(filtro) {
+anuncioSchema.statics.lista = function(filtro, skip, limit, sort, fields) {
     const query = Anuncio.find(filtro);
+    console.log('Filtro: ', filtro);
+    query.skip(skip);
+    query.limit(limit);
+    query.sort(sort);
+    query.select(fields);
     return query.exec();
 } 
 
