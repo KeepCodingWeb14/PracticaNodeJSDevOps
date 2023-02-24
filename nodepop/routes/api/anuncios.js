@@ -31,13 +31,25 @@ router.get('/', async (req, res, next) => {
         if (filterByPrecio) {
             // Convertimos el filtro en formato "MIN-MAX" en un array ["MIN","MAX"]
             const valores = filterByPrecio.split('-');
-            if (valores[0]) {
-                filtro.precio = {'$gte':valores[0]}
-            };
-            if (valores[1]) {
-                // Se trata de MIN y MAX
-                filtro.precio = {'$gte':valores[0], '$lte':valores[1]};
-            };
+            if (valores[0] === filterByPrecio) {
+                // Precio exacto --> precio=X
+                filtro.precio = valores[0]
+            } else {
+                if (valores[0] && !valores[1]) {
+                    // Precio mayor que --> precio=X-
+                    filtro.precio = {'$gte':valores[0]}
+                } else {
+                    if (!valores[0] && valores[1]) {
+                        // Precio menor que --> precio=-X'
+                        filtro.precio = {'$lte':valores[1]}
+                    } else {
+                        if (valores[1]) {
+                            // Intérvalo --> Precio=X-Y
+                            filtro.precio = {'$gte':valores[0], '$lte':valores[1]};
+                        };
+                    }
+                }
+            }
         };
 
         // filtro tags, en la llamada lo llamo "tag" en singular

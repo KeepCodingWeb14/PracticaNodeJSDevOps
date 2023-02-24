@@ -9,9 +9,20 @@
     <p>Welcome to <%= title %></p>
 
     <h2>Lista de anuncios</h2>
-    <% anuncios.forEach(anuncio => { %>
-      <p>Anuncio: <%= anuncio.nombre %> --> Precio: <%= anuncio.precio %> €</p>
-    <% }) %>
+    <table>
 
+      <% anuncios.forEach(anuncio => { %>
+        <tr>
+          <td>  
+            <p>Anuncio: <%= anuncio.nombre %> --> Precio: <%= anuncio.precio %> €</p>
+            <p>Venta? <%= anuncio.venta %> // Tags: <%= anuncio.tags %></p>
+          </td>    
+          <td>
+            <img src="../images/anuncios/<%= anuncio.foto %>" alt="<%= anuncio.foto %>" width=200>
+          </td>
+        </tr>
+        <% }) %>
+        
+    </table>
   </body>
 </html>
