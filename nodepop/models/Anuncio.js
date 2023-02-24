@@ -14,14 +14,11 @@ const anuncioSchema = mongoose.Schema({
 /**
  * METODOS
  * - ESTATICO: lista(); --> Devuelve una lista de anuncios
+ * - ESTATICO: listaTags() --> Devuelve la lista de TAGS disponible
  */
 
 anuncioSchema.statics.lista = function(filtro, skip, limit, sort, fields) {
     const query = Anuncio.find(filtro);
-    // Log del filtro que llega
-    console.log('*** Filtro API: ', filtro);
-    console.log('*** Fields API:', fields);
-    // -----
     query.skip(skip);
     query.limit(limit);
     query.sort(sort);
@@ -41,8 +38,6 @@ anuncioSchema.statics.listaTags = function() {
 
     return ['lifestyle','motor','mobile','work'];
 } 
-
-
 
 // Creación modelo de Anuncio
 const Anuncio = mongoose.model('Anuncio',anuncioSchema);

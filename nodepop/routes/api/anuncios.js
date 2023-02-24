@@ -82,32 +82,6 @@ router.get('/', async (req, res, next) => {
  */
 router.get('/tags/', async (req, res, next) => {
     try {
-
-        /**
-        // filtros
-        const filtro = {};
-        
-        // filtro nombre: que empiece por el texto marcado
-        const filterByNombre = new RegExp('^' + req.query.nombre,"i");
-        if (filterByNombre) {
-            filtro.nombre = filterByNombre;
-        };
-        
-        // filtro: si es venta o no
-        const filterByVenta = req.query.venta;
-        if (filterByVenta) {
-            filtro.venta = filterByVenta;
-        };
-        
-        // filtro precio : posibilidades: desde-hasta , desde- -hasta , fijo
-        const filterByPrecio = req.query.precio;
-        
-        // filtro tags, en la llamada lo llamo "tag" en singular
-        const filterByTag = req.query.tag;
-        if (filterByTag) {
-            filtro.tags = filterByTag;
-        };
-        */
         
         const tags = await Anuncio.listaTags();
         res.json({results: tags});

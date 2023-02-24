@@ -21,7 +21,12 @@ Fecha:26.FEB.23
   
 
 
-## NodeApp
+## Nodepop
+
+App directory
+```sh
+cd nodepop
+```
 
 Install dependencies with:
 ```sh
@@ -38,4 +43,17 @@ Start in development mode:
 npm run dev
 ```
 
+## Llamadas API
+
+### Lista de anuncios
+
+### Lista de tags
+
+### Insertar un nuevo anuncio
+
+## Llamadas WEB
+
+### Lista de anuncios
+
+### Imagenes directas
 
