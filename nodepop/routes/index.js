@@ -12,7 +12,55 @@ const Anuncio = require('../models/Anuncio');
 
 router.get('/', async function(req,res,next) {
   try {
-    const anuncios = await Anuncio.find();
+
+    // filtros
+    const filtro = {};
+        
+    // filtro nombre: que empiece por el texto marcado
+    const filterByNombre = req.query.nombre;
+    if (filterByNombre) {
+      const filterByNombre = new RegExp('^' + req.query.nombre,"i");
+      filtro.nombre = filterByNombre;
+    };
+        
+    // filtro: si es venta o no
+    const filterByVenta = req.query.venta;
+    if (filterByVenta) {
+      filtro.venta = filterByVenta;
+    };
+        
+    // filtro precio : posibilidades: desde-hasta , desde- -hasta , fijo
+    const filterByPrecio = req.query.precio;
+    if (filterByPrecio) {
+      // Convertimos el filtro en formato "MIN-MAX" en un array ["MIN","MAX"]
+      const valores = filterByPrecio.split('-');
+      if (valores[0]) {
+        filtro.precio = {'$gte':valores[0]}
+      };
+      if (valores[1]) {
+          // Se trata de MIN y MAX
+          filtro.precio = {'$gte':valores[0], '$lte':valores[1]};
+      };
+    };
+
+    // filtro tags, en la llamada lo llamo "tag" en singular
+    const filterByTag = req.query.tag;
+    if (filterByTag) {
+        filtro.tags = filterByTag;
+    };
+
+    // paginación
+    const skip = req.query.skip;
+    const limit = req.query.limit;
+
+    // ordenación
+    const sort = req.query.sort;
+
+    // campos
+    const fields = req.query.fields;
+       
+    const anuncios = await Anuncio.lista(filtro, skip, limit, sort, fields);
+
     res.locals.anuncios = anuncios;
     res.render('index');
     

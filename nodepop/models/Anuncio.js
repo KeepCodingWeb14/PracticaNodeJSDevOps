@@ -18,12 +18,28 @@ const anuncioSchema = mongoose.Schema({
 
 anuncioSchema.statics.lista = function(filtro, skip, limit, sort, fields) {
     const query = Anuncio.find(filtro);
-    console.log('Filtro: ', filtro);
+    // Log del filtro que llega
+    console.log('*** Filtro API: ', filtro);
+    console.log('*** Fields API:', fields);
+    // -----
     query.skip(skip);
     query.limit(limit);
     query.sort(sort);
     query.select(fields);
     return query.exec();
+} 
+
+anuncioSchema.statics.listaTags = function() {
+
+    /**
+     * ---->  He encontrado como hacer el SELECT DISTINCT, pero no dentro de los
+     * ---->  elementos de un array
+    const query = Anuncio.find();
+    query.select('tags');
+    return query.exec();
+    */
+
+    return ['lifestyle','motor','mobile','work'];
 } 
 
 
