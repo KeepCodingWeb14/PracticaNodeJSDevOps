@@ -71,7 +71,9 @@ Here you are the three the endpoints that Nodepop app offers
 * ```js
     const query = Anuncio.distinct('tags');
     return query.exec();
-```
+    ```
+
+
 
 ### New `anuncio`
 
