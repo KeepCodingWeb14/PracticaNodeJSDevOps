@@ -10,7 +10,7 @@ async function main() {
     await initAnuncios();
 
     connection.close();
-};
+}
 
 async function initAnuncios() {
 
@@ -26,4 +26,4 @@ async function initAnuncios() {
         {nombre:'Anuncio4',venta:false, precio: 400, foto:'foto4.jpg', tags: ['motor']},
     ]);
     console.log(`***Creados ${inserted.length} anuncios.***`)
-};
+}

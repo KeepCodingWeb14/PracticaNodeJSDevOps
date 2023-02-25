@@ -18,13 +18,13 @@ router.get('/', async (req, res, next) => {
         if (filterByNombre) {
             const filterByNombre = new RegExp('^' + req.query.nombre,"i");
             filtro.nombre = filterByNombre;
-        };
+        }
         
         // filtro: si es venta o no
         const filterByVenta = req.query.venta;
         if (filterByVenta) {
             filtro.venta = filterByVenta;
-        };
+        }
         
         // filtro precio : posibilidades: desde-hasta , desde- -hasta , fijo
         const filterByPrecio = req.query.precio;
@@ -46,17 +46,17 @@ router.get('/', async (req, res, next) => {
                         if (valores[1]) {
                             // Intérvalo --> Precio=X-Y
                             filtro.precio = {'$gte':valores[0], '$lte':valores[1]};
-                        };
+                        }
                     }
                 }
             }
-        };
+        }
 
         // filtro tags, en la llamada lo llamo "tag" en singular
         const filterByTag = req.query.tag;
         if (filterByTag) {
             filtro.tags = filterByTag;
-        };
+        }
 
         // paginación
         const skip = req.query.skip;
