@@ -28,15 +28,8 @@ anuncioSchema.statics.lista = function(filtro, skip, limit, sort, fields) {
 
 anuncioSchema.statics.listaTags = function() {
 
-    /**
-     * ---->  He encontrado como hacer el SELECT DISTINCT, pero no dentro de los
-     * ---->  elementos de un array
-    const query = Anuncio.find();
-    query.select('tags');
+    const query = Anuncio.distinct('tags');
     return query.exec();
-    */
-
-    return ['lifestyle','motor','mobile','work'];
 } 
 
 // Creación modelo de Anuncio

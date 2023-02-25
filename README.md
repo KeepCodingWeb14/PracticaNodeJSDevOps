@@ -67,6 +67,11 @@ Here you are the three the endpoints that Nodepop app offers
 ### `tags` list
 
 * Call without parameters: http://127.0.0.1:3000/api/anuncios/tags
+* Result: all tags used
+* ```js
+    const query = Anuncio.distinct('tags');
+    return query.exec();
+```
 
 ### New `anuncio`
 
